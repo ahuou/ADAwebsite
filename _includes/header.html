@@ -1,0 +1,105 @@
+<header class="site-header" role="banner">
+  <div class="wrapper">
+    <span class="site-title">AdvancedDestroyersofAll</span>
+    <nav class="site-nav">
+      <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+      <label for="nav-trigger">
+        <span class="menu-icon">
+          <svg viewBox="0 0 18 15" width="18px" height="15px">
+            <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+          </svg>
+        </span>
+      </label>
+      <div class="trigger">
+        <a class="page-link" href="{{ "/" | relative_url }}">Home</a>
+        <a class="page-link" href="#synopsis">Synopsis</a>
+        <a class="page-link" href="#integrated-analysis">Integrated Analysis</a>  
+        <a class="page-link" href="#team">Team</a>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<section id="audio-section">
+  <p>Play Ada's Anthem - Interstellar By Hans Zimmer</p>
+  <div id="custom-audio-controls">
+    <img id="play-button" src="assets/images/play-icon.png" alt="Play">
+    <img id="pause-button" src="assets/images/pause-icon.png" alt="Pause">
+  </div>
+  <audio id="audio-player">
+    <source src="assets/song/Interstellar.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+  </audio>
+</section>
+
+
+<section class="hero">
+  <h1 id="typewriter-title">
+    <span class="line1">Main Title Here</span>
+    <span class="line2"></span>
+  </h1>
+  <!-- UFO Image -->
+  <img id="ufo" src="/assets/images/UFO.png" alt="UFO">
+  <img id="alien" src="assets/images/ET_full.png" alt="Alien">
+  <!-- Popup Box -->
+  <div id="popup-box">
+    <p><br>Did I make it to Earth ? </br>
+      Where is my map ?</p>
+  </div>
+</section>
+
+<section class="synopsis-hero" id="synopsis" >
+  <p id="typewriter-synopsis">
+    <span class="synopsis-line">
+      <br> Earth, 2013 <br>
+      <i> In hope of connecting with extraterrestrial life, a group of humans launched a capsule into space containing a projector loaded with every movie made up until 2012. Their wish was simple: one day, the capsule would reach an inhabited planet and encourage its beings to communicate with Earth. They knew the capsule might drift through space for centuries, but the dream of proving aliens were real was worth the wait. </i><br>
+      <br>
+      <br> Polystar, 2024 <br>
+      <i> Ada, a master’s student from the advanced planet Polystar, found herself in a predicament. It was the day before her project proposal deadline and she was desperately searching for a topic for her data analysis course.  While taking a walk to clear her head, she spotted a small meteor falling into the nearby forest. Curious, she decided to investigate the meteor and was surprised when instead of rock, she found a capsule! <br>
+      <br>
+      Back home, Ada used her planet’s cutting-edge technology to open the capsule and power the machine inside. What she found left her speechless: tons of movies from a foreign civilization. Turning on her automatic language translator, she began watching the first film. Fascinated, Ada spent the entire night engrossed in the unfamiliar stories and didn’t get a wink of rest… But by morning, she knew exactly what her project would be! <br>
+      <br>
+      Rushing to class, Ada pitched her idea to her teacher: She would travel to earth and collect real-world data to compare to the movies she had seen. Her teacher, impressed with her proposal, approved it and gave her a budget to fund a week-long trip to the mysterious planet. Excited to discover a whole new world, Ada boarded her lightspeed vessel and set off on her adventure. <br>
+        With only enough funding for a week, Ada knew she had to plan her trip wisely. Using the movie dataset extracted from the capsule, she analyzed the film production patterns and identified four major movie industry clusters on Earth. Based on this, she divided her trip into four destinations. The United States of America, which produced the largest number of films, seemed to hold the best potential for discovery. Therefore, she allocated 3 days of her journey to explore this region. The remaining three destinations—India, Europe, East-Asia —would each get one day. </i>
+      </span>
+  </p>
+</section>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const audioPlayer = document.getElementById('audio-player');
+    const playButton = document.getElementById('play-button');
+    const pauseButton = document.getElementById('pause-button');
+
+    function playAudio() {
+      audioPlayer.play().then(() => {
+        playButton.style.display = 'none';
+        pauseButton.style.display = 'block';
+      }).catch(error => {
+        console.log("Autoplay failed: ", error);
+        playButton.style.display = 'block';
+        pauseButton.style.display = 'none';
+      });
+    }
+
+    // Autoplay when the page loads
+    playAudio();
+
+    playButton.addEventListener('click', () => {
+      playAudio();
+    });
+
+    pauseButton.addEventListener('click', () => {
+      audioPlayer.pause();
+      playButton.style.display = 'block';
+      pauseButton.style.display = 'none';
+    });
+
+    // Play audio when navigating back to home
+    document.querySelector('a[href="{{ "/" | relative_url }}"]').addEventListener('click', (event) => {
+      event.preventDefault();
+      playAudio();
+      window.location.href = event.target.href;
+    });
+  });
+</script>

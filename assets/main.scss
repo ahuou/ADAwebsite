@@ -1,0 +1,709 @@
+---
+#Only the main Sass file needs front matter (the dashes are enough)
+---
+
+@use 
+"minima";
+
+/* START OF THE NAVIGATION BAR/HEADER */
+.site-header {
+  border-top: 0;
+  border-bottom: 0;
+  background: rgba(242, 240, 235, 0.95);
+  position: fixed;
+  width: 100%;
+  z-index: 2500;
+  padding: 2px 0;
+  height: 40px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.site-header .wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100%;
+  padding: 0 20px;
+  max-width: 100%;
+}
+
+.site-title {
+  font-size: 16px;
+  margin-left: 0;
+  line-height: 40px;
+  padding-left: 20px;
+}
+
+.site-nav {
+  line-height: 40px;
+  margin-left: auto;
+  padding-right: 40px;
+}
+
+.site-nav .page-link {
+  margin-left: 20px;
+  color: #333 !important;
+  font-size: 14px;
+}
+
+.site-title, .site-nav .page-link {
+  color: #2c3e50 !important;
+  text-shadow: none;
+}
+/* END OF THE NAVIGATION BAR/HEADER */
+
+/*
+body {
+  margin: 0;
+  padding: 0;
+  background-image: url("/assets/images/background.gif");
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed; // Keeps the background fixed
+  color: #fff; // Default text color
+}
+
+.content-wrapper {
+  max-width: 1200px; // Adjust to desired width 
+  margin: 50px auto; // Top/bottom margin and centered horizontally
+  padding: 30px; // Internal padding for content
+  background-color: #fefefe; // Light background for content
+  border-radius: 8px; // Rounded corners
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); // Subtle shadow
+  color: #333; // Dark text for readability
+}*/
+
+.home {
+  min-height: 100vh;
+  background-color: rgb(242, 240, 235);
+  ;
+  padding: 0 2rem;
+  opacity: 1;
+  border: 1px solid white;
+  border-radius: 10px;
+  overflow: hidden; 
+  margin: 30px 2%;
+  padding: 50px 5%;
+}
+
+
+/* START OF THE BACKGROUND*/ 
+.hero {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start; /* Align elements towards the top */
+  text-align: center;
+  background-size: cover;
+  background-position: center;
+  background-attachment: scroll;
+  padding-top: 120px; /* Add padding to move the content below the header */
+  opacity: 1;  
+  z-index: 1000;
+}
+
+.hero h1 {
+  font-size: clamp(2rem, 4vw, 3.5rem);
+  max-width: 90%;
+  margin: 0 auto;
+  padding: 0 20px;
+  color: rgba(242, 240, 235, 0.95);
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  word-wrap: break-word;
+}
+
+
+@media screen and (max-width: 600px) {
+  .hero h1 {
+    font-size: clamp(1.5rem, 5vw, 2.5rem);
+  }
+}
+
+/* END OF THE BACKGROUND */
+
+
+@media (max-width: 600px) {
+  #background-transition {
+    transition: opacity 0.5s ease-in-out; /* Faster fade on smaller screens */
+  }
+}
+
+#introduction {
+  position: relative;
+  z-index: 0;
+  min-height: 100vh;
+  padding: 50px;
+  background-color: #fefefe; 
+}
+
+/* Smooth Transition for the Opacity Effect */
+.scrolled #background-transition {
+  opacity: 0; // Fading outt
+}
+/* END OF THE BACKGROUND TRANSITION */
+
+
+/* START OF THE CONTENT BELOW BACKGROUND */
+
+.content {
+  padding: 40px; 
+  background-color: white;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  margin: 0 5%; 
+  position: relative;
+  z-index: 2;
+}
+
+.content::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-image: url("/assets/images/background.gif");
+  background-size: cover;
+  background-repeat: repeat;
+  background-attachment: fixed; /* Keeps starry background fixed */
+  z-index: -1; /* Behind the content */
+}
+
+/* END OF THE CONTENT BELOW BACKGROUND */
+.content-section {
+  transition: opacity 0.5s ease-in-out;
+}
+
+.content-section[style="display: none;"] {
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* START OF DYNAMIC LOAD */
+
+
+/* END OF DYNAMIC LOAD */
+
+
+
+/* START OF GLOBAL CONTAINER */
+/*
+#container {
+  background: #000;
+  color: #fff;
+  font-family: sans-serif;
+  font-size: 13px;
+  line-height: 20px;
+  margin: 0px; // layout to be changed
+  overflow: hidden;
+  padding: 0px; // layout to be changed
+}
+// END OF GLOBAL CONTAINER 
+
+// START OF PIP 
+*/
+#container {
+  background: #000;
+  color: #fff;
+  font-family: sans-serif;
+  font-size: 13px;
+  line-height: 20px;
+  margin: 0px;
+  overflow: hidden;
+  padding: 0px;
+}
+
+#map-container {
+  position: relative;
+  width: 100%;
+  //height: 500px; //Normal map size´
+  //transition: all 0.5s ease-in-out; // Smooth transition for PiP mode
+  overflow: hidden
+}
+
+
+#pip-map-container {
+  position: fixed;
+  bottom: 16px;
+  right: 16px;
+  width: 300px; // Adjusted width
+  height: 200px; // Adjusted height
+  max-height: 600px; // Making sure PiP map doesn’t grow too large 
+  overflow: hidden; // No spill
+  //display: none; 
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
+  border: 2px solid #ccc; 
+  background: white; // Fallback background
+  border-radius: 12px; // Rounded corners 
+  cursor: grab; // Show the grab cursor 
+  transition: none;
+  z-index: 50;
+  //transition: all 0.8s ease-in-out; // Disable transitions for smooth dragging
+}
+/* END OF PIP*/
+
+
+/* START OF RESIZING PIP */
+#pip-map-container .resize-handle {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  background: transparent;
+  z-index: 9;
+  cursor: nwse-resize;
+  overflow: hidden;
+}
+
+#pip-map-container .resize-handle.br { /* Bottom-right handle */
+  position: absolute;
+  bottom: 6px;
+  right: 2px;
+  width: 20px;
+  height: 20px;
+  z-index: 10; 
+  cursor: nwse-resize;
+  background: url('/assets/images/arrow_out.jpg') no-repeat center center;
+  background-size: contain; 
+  border: none;
+  outline: none;
+  opacity: 0.8; 
+  transition: opacity 0.2s ease;
+  overflow: hidden;
+}
+
+#pip-map-container .resize-handle.br:hover {
+  opacity: 1; 
+  overflow: hidden;
+}
+/* END OF RESIZING */
+
+#pip-map-container:active {
+  cursor: grabbing; 
+}
+
+/* START OF CLOSING BUTTON IN PIP*/
+#close-pip {
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  z-index: 10;
+  background-color: #c0b2e0;
+  border: 1px solid #ccc;
+  padding: 5px 10px;
+  cursor: pointer;
+  display: none; 
+  border-radius: 4px;
+}
+
+
+#close-pip:hover {
+  background-color: #c2b6d2; 
+}
+/* END OF CLOSING BUTTON IN PIP */
+
+/* START OF DRAGGING BUTTON IN PIP */
+#drag-pip {
+  position: absolute;
+  bottom: 0px; 
+  left: 0px;
+  z-index: 10; 
+  background-color: #e2ddee; 
+  border: 1px solid #ccc;
+  border-radius: 4px; 
+  padding: 5px 10px;
+  cursor: grab; 
+  display: none;
+  border-radius: 4px;
+}
+
+#drag-pip:hover {
+  background-color: #d3c9e2; 
+}
+
+#drag-pip:active {
+  background-color: #c4b6d7; 
+  cursor: grabbing; 
+}
+
+#pip-map-container #drag-pip,
+#pip-map-container #close-pip {
+  display: block;
+}
+/* END OF DRAGGING BUTTON IN PIP */
+
+/*Cool bubble plots */
+.visualization-container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+#hierarchy-plot {
+  margin-bottom: 30px;
+  overflow: hidden;
+}
+
+/* START OF TYPE TOTALLY SPIES*/
+#typewriter-title {
+  font-size: clamp(2rem, 4vw, 3.5rem);
+  font-weight: bold;
+  display: inline-block;
+  overflow-wrap: break-word; 
+  white-space: nowrap;
+  text-align: center;
+  margin: 0 auto;
+  max-width: 90%;
+  animation-duration: 0.9s;
+}
+
+#typewriter-title .line1 {
+  display: block; 
+  white-space: normal;
+}
+
+#typewriter-title .line2 {
+  display: block; 
+  white-space: normal;
+  margin-top: 0.5rem; 
+  animation-duration: 0.9s;
+
+}
+
+
+@keyframes blink-cursor {
+  0% {
+    border-color: transparent;
+  }
+  50% {
+    border-color: #333;
+  }
+  100% {
+    border-color: transparent;
+  }
+}
+/* END OF TYPE TOTALLY SPIES */
+
+/* START OF UFO */
+#ufo {
+  position: absolute;
+  top: -200px; /* Start above the viewport */
+  right: -150px; /* Start off-screen on the right */
+  width: 250px; /* Adjust the size */
+  z-index: 10; /* Ensure it appears above other elements */
+  opacity: 0; /* Hidden initially */
+  animation: ufoDiagonalLanding 6s linear forwards; /* Smooth diagonal animation */
+}
+
+@keyframes ufoDiagonalLanding {
+  0% {
+    top: -200px; /* Start above the viewport */
+    right: -150px; /* Start off-screen on the right */
+    opacity: 0; /* Hidden at start */
+    transform: rotate(0deg); /* Upright at the start */
+  }
+  50% {
+    top: 50%; /* Midway through the diagonal */
+    right: 50%; /* Midway horizontally */
+    opacity: 1; /* Fully visible */
+    transform: rotate(360deg); /* Complete one full rotation */
+  }
+  90% {
+    top: 80%; /* Almost at the landing point */
+    right: 70%; /* Near the final position */
+    opacity: 1;
+    //transform: rotate(720deg); /* Complete a second, faster rotation */
+  }
+  100% {
+    top: 83%; /* Final landing point */
+    right: 80%; /* Exact bottom-left corner */
+    opacity: 1;
+    //transform: rotate(0deg); /* Land upright */
+  }
+}
+/* END OF UFO */
+
+/* START OF ALIEN */
+#alien {
+  position: absolute;
+  top: 100%; /* Initially position the alien near the UFO landing spot */
+  right: 75%; /* Align it near the UFO */
+  width: 100px; /* Adjust the alien size */
+  z-index: 10; /* Ensure it appears above other elements */
+  opacity: 0; /* Initially hidden */
+  animation: alienExit 3s ease-in-out forwards; /* Smooth alien exit animation */
+  animation-delay: 6s; /* Start after the UFO animation ends */
+}
+
+@keyframes alienExit {
+  0% {
+    top: 85%; /* Initial position, inside the UFO */
+    opacity: 1; /* Hidden */
+    transform: scale(0.3);
+  }
+  50% {
+    top: 90%; /* Alien moves downward slightly */
+    opacity: 1; /* Fully visible */
+    transform: scale(0.6);
+  }
+  100% {
+    top: 93%;
+    right: 80%; /* Final landing point, fully outside the UFO */
+    opacity: 1; /* Fully visible */
+    transform: scale(0.75);
+  }
+}
+/* END OF ALIEN */
+
+/* START OF POP UP BOX*/
+#popup-box {
+  position: absolute;
+  top: 82%;
+  right: 58%;
+  width: 20%;
+  height: 13%;
+  background-color: #fff;
+  border: 2px solid #000;
+  border-radius: 10px;
+  padding: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  font-family: Courier New;
+  font-size: 14px;
+  z-index: 20;
+  opacity: 0;
+  animation: popupAppear 2s ease-in-out forwards;
+  animation-delay: 9s;
+}
+
+/* Popup Appear Animation */
+@keyframes popupAppear {
+  0% {
+    opacity: 0;
+    transform: translateY(20px); /* Start slightly below */
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0); /* Move into place */
+  }
+}
+
+/* Add a hover effect to the alien */
+#alien:hover + #popup-box {
+  background-color: #f0f8ff; /* Change background on hover */
+  border-color: #007bff; /* Change border color on hover */
+  cursor: pointer;
+}
+/* END OF POP UP BOX*/
+
+/* START OF ALIEN TOP MAP */
+/* Bubble Container */
+.bubble-container {
+  position: relative;
+  display: inline-block;
+  float: right; /* Align to the right */
+  margin-right: 20px; /* Add some space from the edge */
+  margin-top: -40px; /* Adjust vertical alignment */
+  text-align: center; /* Center content */
+  width: 150px; /* Adjust width */
+}
+
+/* Alien Icon Styling */
+#alien-icon {
+  width: 100px; /* Adjust the alien icon size */
+  margin-bottom: 10px; /* Add space below the icon */
+}
+
+/* Speech Bubble Styling */
+.speech-bubble {
+  position: relative;
+  background: #f0f8ff; /* Light blue background for the bubble */
+  border: 2px solid #007bff; /* Border color matching the theme */
+  border-radius: 15px; /* Rounded edges for the bubble */
+  padding: 10px; /* Padding inside the bubble */
+  font-size: 14px; /* Font size for the text */
+  font-family: Arial, sans-serif;
+  text-align: center;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Add a subtle shadow */
+
+  /* Positioning for the "tail" of the bubble */
+  margin: auto;
+}
+
+.speech-bubble::after {
+  content: "";
+  position: absolute;
+  bottom: -10px; /* Position the "tail" at the bottom */
+  left: 50%; /* Center it horizontally */
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border: 10px solid transparent; /* Create the triangular tail */
+  border-top-color: #f0f8ff; /* Match the bubble's background color */
+}
+
+/* Adjustments for responsiveness */
+@media (max-width: 768px) {
+  .bubble-container {
+    float: none;
+    text-align: center;
+    margin: 0 auto 20px; /* Center on smaller screens */
+  }
+}
+
+/* END OF ALIEN TOP MAP */
+
+.synopsis-hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background-color: transparent; // Ensure transparency
+  background-size: cover;
+  background-position: center;
+  background-attachment: scroll;
+  opacity: 1;
+  z-index: 1000;
+  padding: 2rem;
+}
+
+#typewriter-synopsis {
+  font-size: clamp(0.5rem, 2vw, 1.5rem);
+  font-weight: bold;
+  display: inline-block;
+  overflow-wrap: break-word;
+  white-space: normal;
+  text-align: center;
+  margin: 1rem auto;
+  max-width: 80%;
+  color: rgba(242, 240, 235, 0.95);
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+.ethnicity-analysis-container {
+  margin: 40px 0;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.period-selector-wrapper {
+  margin-bottom: 20px;
+  text-align: right;
+  padding: 10px;
+  border-bottom: 1px solid #eee;
+}
+
+#ea-visualization-container {
+  margin-top: 20px;
+}
+
+.period-selector select {
+  padding: 8px 15px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+  background-color: white;
+  cursor: pointer;
+  margin-left: 10px;
+}
+
+.period-selector label {
+  font-weight: bold;
+  color: #333;
+}
+
+#audio-section {
+  padding: 20px;
+  background-color: transparent; /* Fully transparent background */
+  border-radius: 8px;
+  margin: 100px auto; /* Adjusts position below the header */
+  max-width: 600px;
+  text-align: center;
+  z-index: 1001; /* Keeps it above other elements */
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Horizontally center the content */
+  justify-content: center; /* Vertically center the content */
+}
+
+#audio-section p {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+  color: #fff; /* Ensures text is white */
+}
+
+#audio-section audio {
+  width: auto; /* Ensures the audio controls don't stretch unnecessarily */
+  display: block;
+  margin: 0 auto;
+}
+
+#audio-section audio::-webkit-media-controls-panel {
+  background-color: transparent; /* Makes the control panel fully transparent */
+}
+
+#audio-section audio::-webkit-media-controls-play-button,
+#audio-section audio::-webkit-media-controls-time-remaining-display {
+  color: #fff; /* Ensures play button and text are white */
+}
+
+#audio-section audio::-webkit-media-controls-current-time-display,
+#audio-section audio::-webkit-media-controls-timeline {
+  color: #fff;
+}
+
+#custom-audio-controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+#custom-audio-controls img {
+  width: 40px; /* Sets a consistent width */
+  height: 40px; /* Sets a consistent height */
+  cursor: pointer; /* Makes the icons clickable */
+  transition: transform 0.2s ease-in-out; /* Adds a hover effect */
+}
+
+#custom-audio-controls img:hover {
+  transform: scale(1.1); /* Slightly enlarges the icon on hover */
+}
+
+#team {
+  background-color: transparent !important; 
+  padding: 40px; 
+  text-align: center;
+  color: rgba(242, 240, 235, 0.95);
+  font-weight: bold;
+}
+
+#team h3 {
+  font-size: 24px;
+  font-weight: bold; 
+  margin-bottom: 30px; 
+}
+
+.team-member {
+  display: inline-block;
+  margin: 20px 30px; 
+  text-align: center; 
+}
+
+.team-member img {
+  width: 30px; 
+  height: 30px;
+  margin: 0 5px;
+}
+
+.team-member p {
+  color: rgba(242, 240, 235, 0.95);
+  font-weight: bold;
+  font-size: 18px;
+  margin-top: 10px; 
+}
+
