@@ -1,9 +1,9 @@
 document.addEventListener("DOMContentLoaded", () => {
   // Select the map container and buttons
-  const mapContainer = document.getElementById("map-container");
-  const pipContainer = document.getElementById("pip-map-container");
-  const map = document.getElementById("map");
-  const placeholder = document.getElementById("placeholder");
+  window.mapContainer = document.getElementById("map-container");
+  window.pipContainer = document.getElementById("pip-map-container");
+  window.map = document.getElementById("map");
+  window.placeholder = document.getElementById("placeholder");
   const dragButton = document.getElementById("drag-pip");
   const closeButton = document.getElementById("close-pip");
   const resizeHandles = document.querySelectorAll(".resize-handle"); // Resizing handles

@@ -637,6 +637,15 @@ function loadRegionContent(region) {
     });
 
 
+    if (window.mapContainer.contains(window.map)){
+        map.refresh();
+    }else{
+    window.mapContainer.appendChild(window.map);
+    map.refresh();
+    window.mapContainer.appendChild(window.placeholder);
+    window.pipContainer.appendChild(window.map);
+    }
+
 
     // Reload the map to apply changes
     
